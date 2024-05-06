@@ -25,12 +25,12 @@ pipeline {
         stage('Import Build'){
             steps {
                 echo "${env.JAVA_HOME}"
-                bat "${env.SAG_HOME}/common/lib/ant/bin/ant -DSAGHome=${env.SAG_HOME} -DSAG_CI_HOME=${env.SAG_CI_HOME} -DprojectName=${env.JOB_NAME} -DBuildNumber=${BuildNumber} importBuild"
+                bat "${env.SAG_HOME}/common/lib/ant/bin/ant -DSAGHome=${env.SAG_HOME} -DSAG_CI_HOME=${env.SAG_CI_HOME_PROD} -DprojectName=${env.JOB_NAME} -DBuildNumber=${BuildNumber} importBuild"
             }
         }
         stage('Deploy') {
             steps {
-		bat "${env.SAG_HOME}/common/lib/ant/bin/ant -DSAGHome=${env.SAG_HOME} -DSAG_CI_HOME=${env.SAG_CI_HOME} -DprojectName=${env.JOB_NAME} deploy"
+		bat "${env.SAG_HOME}/common/lib/ant/bin/ant -DSAGHome=${env.SAG_HOME} -DSAG_CI_HOME=${env.SAG_CI_HOME_PROD} -DprojectName=${env.JOB_NAME} deploy"
             }
         }
 		
